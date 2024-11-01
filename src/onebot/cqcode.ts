@@ -6,8 +6,7 @@ function unescape(source: string) {
     return String(source)
         .replace(/&#91;/g, '[')
         .replace(/&#93;/g, ']')
-        .replace(/&#44;/g, ',')
-        .replace(/&amp;/g, '&');
+        .replace(/&#44;/g, ',');
 }
 
 function from(source: string) {
@@ -49,15 +48,13 @@ export function decodeCQCode(source: string): OB11MessageData[] {
 
 export function encodeCQCode(data: OB11MessageData) {
     const CQCodeEscapeText = (text: string) => {
-        return text.replace(/&/g, '&amp;')
-            .replace(/\[/g, '&#91;')
+        return text.replace(/\[/g, '&#91;')
             .replace(/]/g, '&#93;');
 
     };
 
     const CQCodeEscape = (text: string) => {
-        return text.replace(/&/g, '&amp;')
-            .replace(/\[/g, '&#91;')
+        return text.replace(/\[/g, '&#91;')
             .replace(/]/g, '&#93;')
             .replace(/,/g, '&#44;');
     };
